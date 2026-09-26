@@ -1,0 +1,58 @@
+[
+ {
+  "clue": "送出云长弃前程",
+  "expected": "逞",
+  "kind": "字",
+  "source": "zhilezhi.com",
+  "verified_by": "dual-derivation",
+  "derivation": "辶(送) + 程弃禾=呈 → 逞"
+ },
+ {
+  "clue": "旧句翻新恰午时",
+  "expected": "晌",
+  "kind": "字",
+  "source": "zhilezhi.com",
+  "verified_by": "dual-derivation",
+  "derivation": "句翻转=向 + 午时(白昼)=日 → 晌"
+ },
+ {
+  "clue": "中国腾飞招贤能",
+  "expected": "团",
+  "kind": "字",
+  "source": "zhilezhi.com",
+  "verified_by": "dual-derivation",
+  "derivation": "国中玉腾飞→囗 + 招贤能=才 → 团"
+ },
+ {
+  "clue": "子非青莲居士乎",
+  "expected": "柏",
+  "kind": "字",
+  "source": "zhilezhi.com",
+  "verified_by": "dual-derivation",
+  "derivation": "非李(青莲居士)取木 + 李白取白 → 柏"
+ },
+ {
+  "clue": "妆后半掩绝色无",
+  "expected": "缕",
+  "kind": "字",
+  "source": "zhilezhi.com",
+  "verified_by": "dual-derivation",
+  "derivation": "绝去色=纟 + 妆后半(女)+米 → 缕"
+ },
+ {
+  "clue": "抓大放小合心意，重点投入须提前。",
+  "expected": "撩",
+  "kind": "字",
+  "source": "zhilezhi.com",
+  "verified_by": "dual-derivation",
+  "derivation": "取大放小入尞 + 提字扌 → 撩"
+ },
+ {
+  "clue": "周口味精厂出味精",
+  "expected": "碉",
+  "kind": "字",
+  "source": "zhilezhi.com",
+  "verified_by": "dual-derivation",
+  "derivation": "厂+口(周口)=石 + 周 → 碉"
+ }
+]
