@@ -1,0 +1,142 @@
+[
+  {
+    "id": "T01",
+    "clue": "十一点进厂",
+    "target": "打一字",
+    "route": "形路",
+    "grid": null,
+    "method": "增补离合法",
+    "expected": "压",
+    "derivation": "十、一合为土，丶(点)附之，整体进'厂'框内，得'压'。"
+  },
+  {
+    "id": "T02",
+    "clue": "干到两点",
+    "target": "打一字",
+    "route": "形路",
+    "grid": null,
+    "method": "增补法",
+    "expected": "平",
+    "derivation": "'干'别解为干字，'两点'别解为笔画丷，添入成'平'。"
+  },
+  {
+    "id": "T03",
+    "clue": "全民炼钢",
+    "target": "打一湖北地名",
+    "route": "义路",
+    "grid": null,
+    "method": "会意法",
+    "expected": "大冶",
+    "derivation": "全民=大，炼钢=冶，会意为湖北'大冶'。"
+  },
+  {
+    "id": "T04",
+    "clue": "孔雀东南飞",
+    "target": "打一字",
+    "route": "形路",
+    "grid": null,
+    "method": "方位减损法",
+    "expected": "孙",
+    "derivation": "孔之东(右)部'乚'飞余'子'；雀之南(下)部'隹'飞余'小'；子+小=孙。"
+  },
+  {
+    "id": "T05",
+    "clue": "冲破黎明前黑暗",
+    "target": "打一广东地名",
+    "route": "义路",
+    "grid": null,
+    "method": "会意法",
+    "expected": "揭阳",
+    "derivation": "冲破黑暗=揭开夜幕迎旭日，扣'揭阳'。"
+  },
+  {
+    "id": "T06",
+    "clue": "一听可乐",
+    "target": "打一山西地名",
+    "route": "义路",
+    "grid": null,
+    "method": "别解会意法",
+    "expected": "闻喜",
+    "derivation": "听→闻，乐→喜(别解快乐义)，扣山西'闻喜'。"
+  },
+  {
+    "id": "T07",
+    "clue": "千里戈壁",
+    "target": "打一湖南地名",
+    "route": "义路",
+    "grid": null,
+    "method": "会意法",
+    "expected": "长沙",
+    "derivation": "千里=长(路途长)，戈壁=沙(大漠)，扣'长沙'。"
+  },
+  {
+    "id": "T08",
+    "clue": "残月三星",
+    "target": "打一字",
+    "route": "形路",
+    "grid": null,
+    "method": "象形法",
+    "expected": "心",
+    "derivation": "残月象形卧钩乚，三星象形三点丶丶丶，合为'心'。"
+  },
+  {
+    "id": "T09",
+    "clue": "半出登高，其余不动",
+    "target": "打一中国名山",
+    "route": "形路",
+    "grid": null,
+    "method": "半面增补法",
+    "expected": "嵩山",
+    "derivation": "出=两山相叠，'半出'取一'山'；直取'高'，山+高=嵩；'其余不动'剩另一'山'，得'嵩山'。"
+  },
+  {
+    "id": "T10",
+    "clue": "大言不惭",
+    "target": "打一海口城市地名",
+    "route": "义路",
+    "grid": null,
+    "method": "会意法",
+    "expected": "海口",
+    "derivation": "大言不惭即夸下'海口'，扣海南'海口'。"
+  },
+  {
+    "id": "T11",
+    "clue": "进厂生产，干到两点没下岗",
+    "target": "打一福州长乐区地理名称",
+    "route": "形路",
+    "grid": null,
+    "method": "复合增损(成例+增补+减损)",
+    "expected": "六平山",
+    "derivation": "进厂生产扣'六'(字谜成例'下厂就生产=六')；干+丷='平'；岗没下部'冈'余'山'。合为长乐主山六平山。"
+  },
+  {
+    "id": "T12",
+    "clue": "风光明媚",
+    "target": "打一地名",
+    "route": "义路",
+    "grid": null,
+    "method": "会意法",
+    "expected": "景美",
+    "derivation": "风光=景，明媚=美，会意扣'景美'(台北区名，旧镇名)。"
+  },
+  {
+    "id": "T13",
+    "clue": "飞鸿片片频传讯",
+    "target": "打一京剧名·梨花格",
+    "route": "音路",
+    "grid": "梨花格",
+    "method": "谐音替代",
+    "expected": "秦香莲",
+    "derivation": "梨花格全字谐音：底读作'勤相联'——鸿雁传书频频联络，音合义扣。"
+  },
+  {
+    "id": "T14",
+    "clue": "岛",
+    "target": "打一亚洲地名·卷帘格",
+    "route": "义路",
+    "grid": "卷帘格",
+    "method": "会意+倒读",
+    "expected": "地中海",
+    "derivation": "卷帘倒读：'海中地'——岛即海中之地，正扣单字面。"
+  }
+]
