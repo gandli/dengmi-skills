@@ -36,7 +36,16 @@ python3 tests/score.py          # ④ 盲测评分：读 predictions.jsonl 出�
 - `tests/dataset.json` — 14 道金标（形/义/音路 + 梨花/卷帘格 + 多字地名）
 - `tests/benchmark.jsonl` / `tests/answers.jsonl` — 盲测题面 / 答案键
 - `tests/TESTREPORT.md` — 质检结果 + 盲测基线（16.2%）+ 4 个能力缺口 + 留出集设计铁律
-- `tests/crosscheck.json` — 7 条异源双路验证谜（抓取答案 = 独立拆字推导）
-- `tests/holdout_b.jsonl` — ⚠️ 同源留出，仅供"检索先行"回归，非泛化评测
+
+三集定位（**勿混用**）：
+| 集 | 文件 | 用途 | 能否衡量泛化 |
+|---|---|---|---|
+| 金标 | `dataset.json` | 规则 lint（路线/三戒/推导） | 否（结构性） |
+| 盲测 A | `benchmark.jsonl` | 离线推理基线 **16.2%** | 是（弱路径基线） |
+| 检索回归 | `holdout_b.jsonl` | 「检索先行」命中率 | ⚠️ 同源，仅回归监控 |
+| 异源验证 | `holdout_c.jsonl` (7条) | 抓取答案 = 独立拆字，验证 gold 可信 | 是（真双路） |
+
+`holdout_c` 由 `make_crosscheck_holdout.py` 生成：题面与答案物理隔离，仅保留
+zhilezhi.com 异源且抓取答案与我独立拆字推导一致的条目。
 
 当前盲测基线：字谜 20.0% / 成语谜 12.5% / 合计 16.2%（详见 TESTREPORT）。

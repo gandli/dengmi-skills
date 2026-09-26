@@ -91,3 +91,13 @@ python3 tests/score.py              # 盲测评分（读 tests/predictions.jsonl
 ### 6.4 holdout_b 处置
 `holdout_b.jsonl` 保留但标注 `INVALID_AS_BLOODTEST`（同源，见文件头），
 仅可用于"检索先行命中率"的回归监控，不可用作泛化能力评测。
+
+### 6.5 holdout C（异源双路验证集，最终形态）
+`tests/make_crosscheck_holdout.py` 生成 7 条：
+- 源：zhilezhi.com（与 hydcd 语料零重叠）
+- 过滤：仅保留"抓取答案 == 我独立拆字推导"一致的条目
+- 题面/答案物理隔离：`holdout_c.jsonl`（无答案） / `holdout_c_answers.jsonl`（含推导）
+- 丢弃 4 条未双路验证条目
+
+这是目前唯一可用于泛化评测的集，但样本量小（7）。规模瓶颈在于：
+独立推导的验证成本高（每条需人工拆字一遍），且 zhilezhi 成语页解析错位不可用。
