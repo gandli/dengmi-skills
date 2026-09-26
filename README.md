@@ -23,10 +23,18 @@ npx skills add gandli/dengmi-skills
 
 ## Tests
 
-测试集与自检脚本在 `tests/`，零依赖：
+零依赖，四层测试：
 
 ```bash
-python3 tests/run_tests.py
+python3 tests/lint_corpus.py    # ① 语料质检：7980 条 harvested 语料硬伤扫描
+python3 tests/run_tests.py      # ② 金标 lint：14 道经典谜，路线/三戒/推导完整性
+python3 tests/make_benchmark.py # ③ 生成 80 题盲测集（无答案）+ 答案键
+python3 tests/score.py          # ④ 盲测评分：读 predictions.jsonl 出命中率
 ```
 
-`tests/dataset.json` 收录 14 道有公开出处的经典谜（形路/义路/音路·谜格各覆盖，含多字地名与六平山实战题）；脚本按路线判定、三戒（底面不相犯）、推导完整性逐题自检。
+- `tests/corpus/dengmi_corpus.json` — 字谜 3863 + 成语谜 4117（来源：汉辞网）
+- `tests/dataset.json` — 14 道金标（形/义/音路 + 梨花/卷帘格 + 多字地名）
+- `tests/benchmark.jsonl` / `tests/answers.jsonl` — 盲测题面 / 答案键
+- `tests/TESTREPORT.md` — 质检结果 + 盲测基线（16.2%）+ 4 个能力缺口
+
+当前盲测基线：字谜 20.0% / 成语谜 12.5% / 合计 16.2%（详见 TESTREPORT）。
