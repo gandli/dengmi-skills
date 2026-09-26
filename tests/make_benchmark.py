@@ -35,17 +35,23 @@ def main():
     ap.add_argument("--n", type=int, default=40)
     ap.add_argument("--out", default="benchmark")
     ap.add_argument("--exclude", default="", help="jsonl file whose clues must be excluded")
+    ap.add_argument("--kind", default="both", choices=["both","zimi","chengyu"])
     a = ap.parse_args()
     random.seed(a.seed)
     N = a.n
     data = json.load(open(ROOT / "corpus" / "dengmi_corpus.json", encoding="utf-8"))
     rules = {"zimi": (1, "打一字"), "chengyu": (8, "打一成语")}
+    if a.kind != "both":
+        rules = {k: v for k, v in rules.items() if k == a.kind}
 
     excl = set()
-    if a.exclude:
-        for l in open(a.exclude, encoding="utf-8"):
-            if l.strip():
-                excl.add(json.loads(l)["clue"])
+    for path in [x for x in a.exclude.split(",") if x]:
+        for l in open(path, encoding="utf-8"):
+            if not l.strip():
+                continue
+            r = json.loads(l)
+            if "clue" in r:                 # 跳过注记行（如 holdout_b 的 INVALID 标记）
+                excl.add(r["clue"])
 
     bench, key = [], {}
     for cat, (maxlen, mu) in rules.items():

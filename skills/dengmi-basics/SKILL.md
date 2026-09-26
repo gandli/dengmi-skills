@@ -1,7 +1,7 @@
 ---
 name: dengmi-basics
 description: "General Chinese lantern riddle (灯谜/文虎) knowledge base and universal solving workflow. Covers riddle structure (谜面/谜目/谜底), three classic rules (三戒), a universal 6-step solving method (缩圈/判路/分段/拆解/回查/验证) applicable to any riddle type (字/词/成语/地名/人名/物/诗句), form-route vs meaning-route vs sound-route triage with operational-word detection, 15 construction methods, 7 classic riddle grids (谜格), lookup cheatsheets and worked cases. Use when solving, creating, analyzing, or verifying Chinese riddles of any category."
-version: 1.2.0
+version: 1.5.0
 ---
 
 # 灯谜通解 (Lantern Riddles: Universal Knowledge & Solving Method)
@@ -69,6 +69,33 @@ version: 1.2.0
 
 **组合使用**：实战常"一句多法"——先分段，段内各选主法，最后合体校验。
 
+### 多段并列谜面（成语/词语谜高频，占语料 11%，必先判别）
+谜面含 `；` 分隔成多段时，**各段不是并列描述，而是"多条独立线索同时指向同一底"**。
+
+**实测确认的主模式：段 → 成语的半字（2 字单元）**
+每段独立扣成语的**一半**，两段拼出四字成语。判别动作：逐段独立解出 2 字 → 拼接成 4 字。
+
+| 谜面 | 分段扣合 | 底 |
+|---|---|---|
+| 神似；抽象画 | 神似→得意；抽象画→忘形 | **得意忘形** |
+| 阎王殿；潜水艇 | 阎王殿→无常；潜水艇→出没 | **出没无常** |
+| 剧团下乡；巡回演出 | 巡回→逢场；剧团下乡→作戏 | **逢场作戏** |
+| 钴——钤；故事新编 | 钴—钤=古；故事新编=今用 | **古为今用** |
+| 四舍值；管它是多少 | 四舍=不计；管多少=其数 | **不计其数** |
+
+**次模式：共享去部**（各段含同一部件、去掉后成谜）
+傲；你；僖；位（都去亻）→ 旁若无人
+
+**失败模式（实测两轮）**：
+1. 把多段当"一句长句"整体会意 → 必然失败（`沉鱼落雁` 之于 `阎王殿；潜水艇`）
+2. 只抓到一段就急着填成语 → 半字模式要求**两段都扣住**才算成立
+3. 段序与成语序**不保证一致**，拼接后须回查调序（如 `剧团下乡；巡回演出` 拼作 `逢场作戏`）
+
+### 形路标准动作：逆向枚举（字谜专用，必做）
+正向"读谜面猜字"成功率极低——必须先**逆向**：切词 → 候选部件枚举 → 组合 → 回查。
+详细步骤、示范、反面示范与部件映射表见 `references/components.md` 第五/六节。
+没有部件字典，形路字谜几乎必然失败（离线基线 5%）。
+
 ## 五、七大常见谜格（格法一句话）
 
 | 格 | 规则 |
@@ -95,4 +122,5 @@ version: 1.2.0
 ## 七、文件索引
 
 - `references/cheatsheet.md` — 笔画部件象形表、借代词库、操作词全表、谜目惯例
+- `references/components.md` — 部件字典 + 形路逆向枚举 SOP（字谜专用）
 - `examples/solved-cases.md` — 形路/义路/多字地名三类复盘案例

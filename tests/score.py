@@ -1,12 +1,15 @@
 #!/usr/bin/env python3
 """
-Score predictions against the answer key.
+Score predictions against an answer key.
 
 Usage:
-  python3 tests/score.py [predictions.jsonl]   # default tests/predictions.jsonl
+  python3 tests/score.py [predictions.jsonl] [answers.jsonl]
+    defaults: tests/predictions.jsonl  tests/answers.jsonl
 
 predictions.jsonl format (one per line):  {"id": "zimi-01", "answer": "..."}
+answers.jsonl   format (one per line):  {"id": "zimi-01", "expected": "..."}
 Scores exact match; also reports fuzzy (answer substring of expected or reverse).
+Note: unknown ids in predictions are ignored — only ids in the key are scored.
 """
 import json, sys
 from pathlib import Path
@@ -15,6 +18,7 @@ ROOT = Path(__file__).parent
 
 def main():
     pred_path = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "predictions.jsonl"
+    key_path = Path(sys.argv[2]) if len(sys.argv) > 2 else ROOT / "answers.jsonl"
     if not pred_path.exists():
         print("尚未提交预测。请先编辑 tests/predictions.jsonl 或传入预测文件：")
         print("  python3 tests/score.py tests/predictions.jsonl")
@@ -22,7 +26,7 @@ def main():
         sys.exit(2)
 
     key = {}
-    with open(ROOT / "answers.jsonl", encoding="utf-8") as f:
+    with open(key_path, encoding="utf-8") as f:
         for line in f:
             if line.strip():
                 r = json.loads(line)
@@ -57,7 +61,7 @@ def main():
             wrong.append((rid, expected, got, "未答"))
 
     total = len(key)
-    print(f"=== 盲测评分 (共 {total} 题，已答 {total - missed}) ===")
+    print(f"=== 盲测评分 [{key_path.name}] 共 {total} 题，已答 {total - missed} ===")
     for cat, s in sorted(per_cat.items()):
         acc = s["exact"] / max(s["total"], 1) * 100
         print(f"[{cat}] 精确命中 {s['exact']}/{s['total']} ({acc:.1f}%)  近似 {s['fuzzy']}")
