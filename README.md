@@ -49,3 +49,9 @@ python3 tests/score.py          # ④ 盲测评分：读 predictions.jsonl 出�
 zhilezhi.com 异源且抓取答案与我独立拆字推导一致的条目。
 
 当前盲测基线：字谜 20.0% / 成语谜 12.5% / 合计 16.2%（详见 TESTREPORT）。
+
+## Evolution
+
+SkillOpt 式进化闭环（rollout → reflect → 有界编辑 → 验证门控）：可实施方案与脚本见
+`tests/evolution/`（`SKILLOPT_PLAN.md` 为执行手册）。目标：在 held-out test 上相对
+v1.5.0 严格涨分，只有通过验证门控的编辑才能进入最终 Skill。

@@ -1,0 +1,9 @@
+{
+  "seed": 20260928,
+  "repo_commit": "4dc3c14",
+  "splits": {
+    "train": 100,
+    "val": 60,
+    "test": 60
+  }
+}
