@@ -1,12 +1,12 @@
-<!-- 状态：SkillOpt 进化候选（epoch 2 门控通过），待 held-out test 最终验证。
+<!-- 状态：SkillOpt 进化候选（epoch 3 门控通过，val 18.33%），待 held-out test 最终验证。
      本文件不是正式版本：仓库现行 skill 仍为 skills/dengmi-basics/SKILL.md（v1.5.0）。
-     4 个编辑均通过 val 门控（16.67% > 基线 11.67%）；test 未跑，不得宣称最终提升。
+     8 个编辑均通过 val 门控；test 未跑，不得宣称最终提升。
      详见 tests/evolution/EVOLUTION_REPORT.md。 -->
 
 ---
 name: dengmi-basics
 description: "General Chinese lantern riddle (灯谜/文虎) knowledge base and universal solving workflow. Covers riddle structure (谜面/谜目/谜底), three classic rules (三戒), a universal 6-step solving method (缩圈/判路/分段/拆解/回查/验证) applicable to any riddle type (字/词/成语/地名/人名/物/诗句), form-route vs meaning-route vs sound-route triage with operational-word detection, 15 construction methods, 7 classic riddle grids (谜格), lookup cheatsheets and worked cases. Use when solving, creating, analyzing, or verifying Chinese riddles of any category."
-version: 1.6.0-candidate-epoch2
+version: 1.6.0-candidate-epoch3
 ---
 
 # 灯谜通解 (Lantern Riddles: Universal Knowledge & Solving Method)
@@ -39,6 +39,8 @@ version: 1.6.0-candidate-epoch2
 - 每步缩小假设空间；任何一步出现两个以上同样自洽的候选，回到谜目重新缩圈。
 - 拆解失败三次 → 怀疑判路错误（把义路谜当形路谜是最常见错误）。
 - 字面直扣=干扰项（条件式，成语谜，epoch2 修订）：谜面字词能直接拼出某个成语时（如"针线"→穿针引线、"谋皮"→与虎谋皮），先做逐字映射检查再决定去留：① 候选成语逐字写出"谜面词→底字"别解/借代映射；② 任一字无交代（映射不完整）→ 判为出题人干扰项，排除后走别解；③ 每个字都干净映射、无闲字无相犯 → 字面答案保留为首选。禁令：不许仅因"太像字面"就排除一个映射完整的候选，不许为避字面硬换近义成语。
+- 映射粒度律（epoch3 新增）：别解映射必须是"谜面语素→底字单字"的逐字对应；"整句意境→整个成语"的打包映射一律作废。检验句式："底的第 N 个字由谜面哪几个字交代？"任一字答不出 → 候选作废。正例：`扔下铁锤拿灯草`→`拈轻怕重`（铁锤→重、灯草→轻、扔/拿→拈/怕，字字有主）；反例：`半天云里踩钢丝`→`如履薄冰`（"冰"字谜面何处交代？"薄"字呢？答不出 → 打包映射，作废）。
+- 专名意象转码检查（epoch3 新增）：谜面出现人名/历史事件/诗句/自然意象（风云花鸟江河湖海）时，定稿前必须先走一遍转码再允许直解：人名→其典故成语候选（如`废刘婴王莽称帝`→`更新换代`）；诗句→作者姓或关键字（如`待到秋来九月八`→黄巢→`黄道吉日`）；自然意象→固定象征（风云→龙虎，如`风云密布`→`藏龙卧虎`；江河湖海→泛指）。走完转码仍无候选，才允许按字面/会意定稿。
 
 ## 三、判路信号表（速查）
 
@@ -104,6 +106,8 @@ version: 1.6.0-candidate-epoch2
 
 部件穷尽检查（必做，epoch1 提出、epoch2 沿用）：逆向枚举完成后，逐字核对谜面每个字是否都有交代（作部件/操作词/方位词/会意成分）；凡出现"存疑""未全扣"字样，一律回炉重拆，不许带病进入验证。train 复盘典型漏扣：`三十六策选上策`漏"取"（→趣非走）、`一住京中三十载`漏"艹"（→草非早）、`本厂定点生产木偶`漏一木（→麻非床）、`一箭之距宝岛分`"一箭"须别解为"矣"非"矢"（→唉）。
 
+映射表强制格式（epoch3 新增）：最终答案前必须输出三列映射表 —— 谜面切分段（原文引用）｜交代对象（部件/借代）｜操作（增删/方位/别解）。任一段落、任一操作词（如"去""各""伊始"）无交代 → 回炉，不许定稿。字谜漏段重灾复盘：`三潭印月入画中`漏"三潭"（→渭非胃）、`会流于海水去悠悠`"水去"仍加氵（→毓非滺）、`上千北雁各西东`漏"各西东"（→乘非乖）、`四化前程美的开端`只扣半句（→税非美）。
+
 ### 字谜高频部件借代小表（epoch1 提出、epoch2 沿用；train 失败复盘提炼，形路判路后先查表再拆）
 | 谜面词 | 别解/借代 | 复盘例 |
 |---|---|---|
@@ -126,6 +130,9 @@ version: 1.6.0-candidate-epoch2
 | 向上不偏斜 | 止 | 一直向上不偏斜→正（一+止） |
 | 同宗共祖 | 公 | 一衣带水，同宗共祖→滚（氵+衮） |
 | 面目变 | 可 | 三人相聚面目变→何（亻+可） |
+| 秋水 | 目（眼睛意象） | 三五扁舟趁秋水→盼（秋水=目） |
+| 水意象（潭/川/海/江） | 氵 | 三潭印月入画中→渭（氵+胃） |
+| 丝 | 幺（丝之初文；丝丝→幺幺） | 丝丝垂柳隔山来→幽（幺+山+幺） |
 
 ## 五、七大常见谜格（格法一句话）
 
